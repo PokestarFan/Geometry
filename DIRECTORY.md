@@ -6,3 +6,4 @@
 2. `get_quadrent`
 3. `is_positive_negative`
 4. `is_zero`
+5. `multiple_problems`

@@ -59,9 +59,14 @@ def generate_string(dict_or_list: Union[Dict[str, List[types.FunctionType]], Lis
     if isinstance(dict_or_list, list):
         count = 0
         for entry in dict_or_list:
-            count += 1
-            print('Found function %s' % entry.__name__)
-            formatted_string += '%d. `%s`\n' % (count, entry.__name__)
+            try:
+                entry.__name__
+            except AttributeError:
+                pass
+            else:
+                count += 1
+                print('Found function %s' % entry.__name__)
+                formatted_string += '%d. `%s`\n' % (count, entry.__name__)
     elif isinstance(dict_or_list, dict):
         for name, flist in dict_or_list.items():
             print('Found module %s' % name)

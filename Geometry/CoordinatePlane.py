@@ -39,3 +39,8 @@ def get_quadrent(x: int, y: int):
 def multiple_problems(*args: Dict[int, int]):
     for x, y in args:
         print(get_quadrent(x, y))
+
+
+if __name__ == '__main__':
+    while True:
+        print('\n%s' % get_quadrent(int(input('x')), int(input('y'))))
