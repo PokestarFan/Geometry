@@ -1,7 +1,8 @@
 import inspect
 import types
-import Geometry
 from typing import List, Union
+
+import Geometry
 
 
 def scan_module(mod: types.ModuleType) -> List[types.FunctionType]:
@@ -35,12 +36,12 @@ def generate_string(dict_or_list: Union[dict, list], gen_str: str = None) -> str
         count = 0
         for entry in dict_or_list:
             count += 1
-            formatted_string += '%d. `%s`\n' % (count, entry.__name__)
             print('Found function %s' % entry.__name__)
+            formatted_string += '%d. `%s`\n' % (count, entry.__name__)
     elif isinstance(dict_or_list, dict):
         for name, flist in dict_or_list.items():
-            formatted_string += gen_str % (name, generate_string(flist))
             print('Found module %s' % name)
+            formatted_string += gen_str % (name, generate_string(flist))
     return formatted_string.strip()
 
 if __name__ == '__main__':
