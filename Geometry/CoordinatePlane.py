@@ -1,3 +1,5 @@
+from typing import Dict
+
 VALUES = {
     (True, True): 1,
     (False, True): 2,
@@ -29,5 +31,11 @@ def is_positive_negative(num: int):
 def coordinate_value_test(x: int, y: int):
     return is_positive_negative(x), is_positive_negative(y)
 
+
 def get_quadrent(x: int, y: int):
-    pass
+    return VALUES[coordinate_value_test(x, y)]
+
+
+def multiple_problems(*args: Dict[int, int]):
+    for x, y in args:
+        print(get_quadrent(x, y))
