@@ -68,9 +68,14 @@ def generate_string(dict_or_list: Union[Dict[str, List[types.FunctionType]], Lis
                 print('Found function %s' % entry.__name__)
                 formatted_string += '%d. `%s`\n' % (count, entry.__name__)
     elif isinstance(dict_or_list, dict):
+        ct = 0
+        toc = """# Table of Contents: \n\n"""
         for name, flist in dict_or_list.items():
             print('Found module %s' % name)
-            formatted_string += gen_str % (name, generate_string(flist))
+            formatted_string += ('\n\n' + gen_str) % (name, generate_string(flist))
+            ct += 1
+            toc += '%d. [%s](#%s)\n' % (ct, name, name)
+        formatted_string = toc.rstrip() + formatted_string
     return formatted_string.strip()
 
 

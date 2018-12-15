@@ -1,1 +1,1 @@
-from . import CoordinatePlane
+from . import CoordinatePlane, Triangle
